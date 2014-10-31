@@ -1,0 +1,632 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>¿Qué son los datos geograficos?</title>
+
+		<meta name="description" content="Mapas, datos geograficos, herramientas">
+		<meta name="author" content="Gabriela Rodríguez">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/theme/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- If the query includes 'print-pdf', include the PDF print sheet -->
+		<script>
+			if( window.location.search.match( /print-pdf/gi ) ) {
+				var link = document.createElement( 'link' );
+				link.rel = 'stylesheet';
+				link.type = 'text/css';
+				link.href = 'css/print/pdf.css';
+				document.getElementsByTagName( 'head' )[0].appendChild( link );
+			}
+		</script>
+
+		<!--[if lt IE 9]>
+		<script src="lib/js/html5shiv.js"></script>
+		<![endif]-->
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+				<section>
+					<h1>Datos geograficos</h1>
+					<h3>datos para dibujar mapas</h3>
+					<p>
+						<small>Por <a href="http://gaba.stayover.org">Gabriela Rodríguez</a> / <a href="http://twitter.com/gaba">@gaba</a></small>
+					</p>
+					<p>
+						<small>Knight-Mozilla Open News Fellow at La Nacion, Argentina</small>
+					</p>
+					<aside class="notes">
+						programadora de Open News en La Nacion
+						gracias noah veltman, brian jacobs por la inspiración, andy tow por links
+						vamos a hacer una charla basica sobre mapas
+					</aside>
+				</section>
+
+				<section>
+					<h2>¿Qué son datos geograficos?</h2>
+					<h3>lista de datos con ubicación geografica</h3>
+
+					<aside class="notes">
+						<ul>
+							<li>+1 - resultados de elecciones, como se voto en tu escuela?</li>
+							<li>+1 - por donde hay contaminación, por ejemplo "contaminación en el riachuelo" http://quepasariachuelo.org.ar/</li>
+							<li>-1 - </li>
+						</ul>
+
+						Dirección, que ubique donde esta sucediendo algo, datos que se puedan dibujar para delimitar un territorio
+						No todos los datos geograficos deberian ser visualizados en mapas. Aveces hay datos que al visualizarlos en un mapa pueden llevar a confundir en vez de aclarar y que realmente requieren otro tipo de visualización.
+
+						Cuando no usar un mapa para visualizar datos geograficos:
+
+						1. cuando los patrones interesantes no son geograficos
+						2. cuando los datos geograficos son mas efectivos para analizar
+
+					</aside>
+				</section>
+
+				<section>
+					<h2>Mapas</h2>
+					<h3></h3>
+					<p>
+						Los mapas consisten de datos geograficos y un sistema para representarlos visualmente.
+					</p>
+					<aside class="notes"></aside>
+				</section>
+
+				<section>
+					<h2>Latitud y Longitud</h2>
+					<p>
+						Latitudes van de -90 (polo sur) a 90 (polo norte), con 0 en el ecuador.
+					</p>
+					<p>
+						Longitudes van de -180 (la mitad del camino yendo del primer meridiano al oeste) a 180 (la mitad del camino yendo del primer meridiano al este)
+					</p>
+					<p>Buenos Aires está en -34.6158527,-58.4332985 </p>
+					<aside class="notes">
+						Muchos de los datos que encuentren estaran basados en coordenadas latitud/longitud de la superficie de la Tierra.
+						Un capitan de la mar podria escribir latitud y longitud en grados, minutos y segundos como:
+
+						37°46'42"N, 122°23'22"W
+
+						pero las comutadoras usan decimales nomas:
+
+						37.77833, -122.38944
+
+						Si tienes un par latitud/longitud y quieres saber rapidamente donde es puedes entrarlos en google earth u openstreetmap.org
+					</aside>
+				</section>
+
+				<section>
+					<section>
+						<h2>Geometria de mapas</h2>
+						<h3>todo lo que representes en un mapa es un conjunto de puntos latitud/longitud.</h3>
+						<p>
+							Cualquier espacio geografico se puede expresar como una secuencia de pares latitud/longitud.
+						</p>
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<h2>Un lugar</h2>
+						<p>un punto en el mapa es un sólo par latitud/longitud</p>
+						<p>
+							<img src="images/mapa_point.png">
+						</p>
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<h2>Una linea recta</h2>
+						<p>Es un par de puntos latitud/longitud, uno para el inicio y otro para el final.</p>
+						<p>
+							<img src="images/mapa_line.png">
+						</p>
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<h2>Una secuencia de lineas</h2>
+						<p>aveces llamada polyline, es una lista de lineas rectas en orden (una lista de pares de puntos latitud/longitud).</p>
+						<p>
+						</p>
+						<aside class="notes"></aside>
+					</section>
+					<section>
+						<h2>Una región cerrada</h2>
+						<p>llamada polygono, es un tipo especia de polyline que termina donde empezo.</p>
+						<p>
+							<img src="images/uruguay_slippy.png">
+						</p>
+						<aside class="notes"></aside>
+					</section>
+				</section>
+
+				<section>
+					<h2>Feature</h2>
+					<h3></h3>
+					<p>
+						Una feature puede ser cualquier cosa que exista en un lugar fisico fijo (una casa, un pais, ciudad, calle, semaforo, lago, etc). Una feature tiene geometria y propiedades.
+					</p>
+					<aside class="notes">
+					Los formatios más comunes de expresar datos geograficos, piensan en terminos de features. Una feature puede ser cualquier cosa que exista en un lugar fisico fijo (una casa, un pais, ciudad, calle, semaforo, lago, etc). Una feature tiene geometria y propiedades.
+
+					La geometria de una feature consiste en una combinación de elementos geometricos como los anteriores. Por ejemplo, la geodata de un país puede consistir de alrededor de 200 features. Cada feature consiste de una lista de puntos para dibujar una linea alrededor del perimetro del país, es decir, un poligono.
+
+					Las propiedades de un feature es todo lo demas que te interesa para mostrar en el mapa. Por ejemplo, para los paises del mundo seguramente te interese los nombres.
+					</aside>
+				</section>
+
+				<section>
+					<section>
+						<h2>Formatos de geodatos</h2>
+						<p>geodatos es una lista de features, y cada feature es una lista de piezas geometricas, y cada pieza geometrica es una lista de latitud/longitud</p>
+						<p data-markdown>
+							```
+							Feature #1:
+									geometry:
+											polygon #1: [list of lat/lngs]
+											polygon #2: [list of lat/lngs] (for Easter Island)
+											...
+									properties:
+											name: Chile
+											capital: Santiago
+											...
+							Feature #2:
+									geometry:
+											polygon #1: [list of lat/lngs]
+											polygon #2: [list of lat/lngs]
+											...
+									properties:
+											name: Argentina
+											capital: Buenos Aires
+											...
+							```
+						</p>
+						<aside class="notes">
+							En el mundo real la lista de latitud/longitud tienen que venir en un formato consistente que una computadora puede leer y que deseablemente sea entendible por humanos
+						</aside>
+					</section>
+
+					<section>
+						<h2>Shapefile</h2>
+						<h3></h3>
+						<p>
+							Un "shapefile" es un conjunto de archivos:
+							<ul>
+							 	<li>.shp - la geometria de todas las features</li>
+							 	<li>.shx - un archivo de ayuda que guarda el orden en que los shapes estaran</li>
+							 	<li>.dbf - guarda las propiedades de cada features en una planilla</li>
+							 	<li>.prj - descripción de proyecto</li>
+							</ul>
+						</p>
+						<p>Es un buen formato para manipulación e inspección de datos de mapas. No es muy bueno para hacer mapas en la web pero hay herramientas para convertirlos a otros formatos.
+						</p>
+						<aside class="notes">Más común para datos detallados de mapas.</aside>
+					</section>
+
+					<section>
+						<h2>GeoJSON</h2>
+						<h3></h3>
+						<p>
+							JSON es un formato ligero para intercambio de datos en la web. GeoJSON es el mismo formato para mapas en la web. También es entendible por humanos y se puede abrir y editar en cualquier editor de textos.
+						</p>
+					</section>
+					<section data-markdown>
+						<h3>GeoJSON para el perimetro de Uruguay</h3>
+						```
+						{
+							"type":"Feature",
+							"geometry":{
+								"type":"Polygon",
+								"coordinates":[
+									[
+										[-57.62513342958296,-30.21629485445426],
+										[-56.976025763564735,-30.109686374636127],
+										[-55.97324459494094,-30.883075860316303],
+										[-55.601510179249345,-30.853878676071393],
+										[-54.57245154480512,-31.494511407193748],
+										[-53.78795162618219,-32.047242526987624],
+										[-53.209588995971544,-32.727666110974724],
+										[-53.6505439927181,-33.20200408298183],
+										[-53.373661668498244,-33.768377780900764],
+										[-53.806425950726535,-34.39681487400223],
+										[-54.93586605489773,-34.952646579733624],
+										[-55.67408972840329,-34.75265878676407],
+										[-56.21529700379607,-34.85983570733742],
+										[-57.1396850246331,-34.430456231424245],
+										[-57.81786068381551,-34.4625472958775],
+										[-58.42707414410439,-33.909454441057576],
+										[-58.349611172098875,-33.26318897881541],
+										[-58.13264767112145,-33.040566908502015],
+										[-58.14244035504076,-32.044503676076154],
+										[-57.87493730328188,-31.016556084926208],
+										[-57.62513342958296,-30.21629485445426]
+									]
+								]
+							},
+							"properties":{
+								"name": "Uruguay",
+								"capital": "Montevideo"
+							},
+						}
+						```
+
+						Esto significa dibujar un poligono empezando en [-57.62513342958296,-30.21629485445426] y terminando en ese mismo punto.
+						</p>
+						<aside class="notes"></aside>
+					</section>
+
+					<section data-markdown>
+						<h2>KML</h2>
+
+						<h3>Es un XML especifico para datos geograficos. Es usado por Google Maps, Google Earth, Google Fusion Tables.</h3>
+
+						<p>
+							```
+							<Polygon id="Uruguay">
+								<outerBoundaryIs>
+									<LinearRing>
+										<coordinates>
+											-57.625133429582959,-30.216294854454262
+											-56.976025763564735,-30.109686374636127
+											-55.973244594940937,-30.883075860316303
+											-55.601510179249345,-30.853878676071393
+											-54.572451544805119,-31.494511407193748
+											-53.787951626182192,-32.047242526987624
+											-53.209588995971544,-32.727666110974724
+											-53.650543992718099,-33.20200408298183
+											-53.373661668498244,-33.768377780900764
+											-53.806425950726535,-34.396814874002231
+											-54.93586605489773,-34.952646579733624
+											-55.674089728403288,-34.752658786764073
+											-56.215297003796067,-34.859835707337417
+											-57.139685024633103,-34.430456231424245
+											-57.81786068381551,-34.462547295877499
+											-58.427074144104388,-33.909454441057576
+											-58.349611172098875,-33.263188978815407
+											-58.132647671121447,-33.040566908502015
+											-58.142440355040762,-32.044503676076154
+											-57.874937303281882,-31.016556084926208
+											-57.625133429582959,-30.216294854454262
+										</coordinates>
+									</LinearRing>
+								</outerBoundaryIs>
+							</Polygon>
+							```
+						</p>
+
+						<aside class="notes"></aside>
+					</section>
+
+					<section>
+						<h2>TopoJSON</h2>
+						<h3></h3>
+						<p>
+						Es similar a GeoJSON pero reducido para que sea más ligero y guarde solamente lo que nos importe de los datos (la topologia).
+
+						Más información sobre este formato en https://github.com/mbostock/topojson/wiki
+						</p>
+						<aside class="notes"></aside>
+					</section>
+
+					<section>
+						<h2>¿Catalogos que tengan geodatos?</h2>
+						<h3></h3>
+					</section>
+
+					<section>
+						<h2>Natural Earth</h2>
+						<p><a href="http://www.naturalearthdata.com/">http://www.naturalearthdata.com/</a></p>
+						<p>Tiene descargas de diferentes conjuntos de datos para toda la Tierra: Culturales (fronteras de paises, provincias, calles, rutas, ciudades, aeropuertos, parques, etc) y Fisicos (costas, islaes, rios, lagos, etc).</p>
+					</section>
+
+					<section>
+						<h2>Sistema Estadístico Nacional Argentino</h2>
+						<p><a href="http://www.indec.gov.ar/codgeo.asp">http://www.indec.gov.ar/codgeo.asp</a></p>
+						<p>Tiene descargas de todo el pais, provincias, departamentos y puntos de localidades en formato shapefile. Hay que registrarse (gratuito y sólo un correo de confirmación) para poder descargar archivos.</p>
+					</section>
+
+					<section>
+						<h2>Geocommons</h2>
+						<p><a href="http://geocommons.com/">http://geocommons.com/</a></p>
+						<p>Conjuntos de geodatos generados por usuarios, fáciles de buscar, navegar y pre-visualizar.</p>
+					</section>
+
+					<section>
+						<h2>Wikimedia Commons</h2>
+						<p><a href="http://commons.wikimedia.org/wiki/Category:Maps">http://commons.wikimedia.org/wiki/Category:Maps</a></p>
+						<p>Muchos mapas en <a href="http://wiki.openstreetmap.org/wiki/SVG">formato SVG</a>, que puede ser modificado para la web.</p>
+					</section>
+
+				<section>
+					<h2>OpenStreetMap</h2>
+					<p><a href="http://www.openstreetmap.org">http://www.openstreetmap.org/</a></p>
+					<p>La mejor base de datos de fronteras, rutas y lugares para toda la Tierra. Esta disponible en un formato especial XML y tiene que ser convertido para que pueda ser utilizado por la mayoria del software disponible. </p>
+				</section>
+
+				<section>
+					<h2>Cartografía Censal</h2>
+					<p><a href="http://www.buenosaires.gob.ar/areas/hacienda/sis_estadistico/cartografia_censal_cnphv_2010.php?menu_id=35240">http://www.buenosaires.gob.ar/</a></p>
+					<p>Archivos en formato shapefile de comunas, vias de tren, autopistas,barrios, calles, etc de la provincia de Buenos Aires.</p>
+				</section>
+
+					<section>
+						<h2>Cartografía digital de la provincia de Buenos Aires</h2>
+						<p><a href="http://www.ec.gba.gov.ar/estadistica/censo2010/cartografia.html">http://www.ec.gba.gov.ar/estadistica/censo2010/cartografia.html</a><p>
+						<p>Para descargar en formato shapefile los conjuntos de datos que fueron utilizados en el Censo Nacional de Población, Hogares y Viviendas 2010 en la provincia de Buenos Aires.</p>
+					</section>
+				</section>
+
+				<section>
+					<section>
+						<h2>Software para convertir y trabajar con geodatos</h2>
+					</section>
+
+					<section>
+						<h2>Convertidor ogr2ogr</h2>
+						<p><a href="http://ogre.adc4gis.com/">http://ogre.adc4gis.com/</a></p>
+						<p>Puede convertir entre varios formatos, entre ellos shapefile y GeoJSON.</p>
+					</section>
+
+					<section>
+						<h2>Quantum GIS Software de Escritorio</h2>
+						<p><a href="http://www.qgis.org/">http://www.qgis.org/</a></p>
+						<p>Muy bueno para trabajar con archivos de formato shapefiles. Muy sencillo para visualizar rapidamente conjuntos de datos.Es gratuito y muy potente.</p>
+						<aside class="notes"></aside>
+					</section>
+
+				</section>
+
+				<section>
+
+					<section>
+						<h2>De GeoDatos a Mapas en la Web</h2>
+						<h3>¿Tiene que ser tu mapa interactivo?</h3>
+
+						<ul>
+							<li>"Slippy maps" o mapas deslizables</li>
+							<li>Javascript + SVG/Canvas</li>
+							<li>Con servicios en la web que crea los mapas por vos</li>
+						</ul>
+
+						<aside class="notes"></aside>
+					</section>
+
+					<section>
+						<h2>Mapas Deslizables</h2>
+						<h3></h3>
+						<p>
+							<a href="http://www.google.com"><img src="images/slippy_maps.png"></a>
+						</p>
+						<aside class="notes">El mapa es una serie de cuadrados (tiles) en el fondo que son sólo imagenes, por lo que se llaman mapas basados en "tiles". En cada nivel de zoom, todo el globo es dividido en una plantilla gigante de cuadrados. En donde estes en el mapa, carga las imagenes para los cuadrados que estes mirando y comienza a cargar todos los cuadrados cercanos por si te moves. Cuando muevas el mapa, carga los nuevos que necesites.</aside>
+					</section>
+
+					<section>
+						<h2>Ventajas</h2>
+						<h3>de mapas deslizables</h3>
+						<ul>
+							<li>Los navegadores más usados los soportan. Son livianos para que puedan ser cargados con poco ancho de banda.</li>
+							<li>La gente se ha acostumbrado a ellos.</li>
+							<li>Facilmente se pueden hacer 'responsive' a tamaño de pantalla.</li>
+							<li>Tiene las propiedades más importantes de mapas, como zooming, panning y la posiblidad de agregar markers.</li>
+						</ul>
+						<aside class="notes"></aside>
+					</section>
+
+					<section>
+						<h2>Desventajas</h2>
+						<h3>de mapas deslizables</h3>
+						<ul>
+							<li>Puede ser complicado generar tus propias tiles, necesitando datos, estilos y un poco de conocimiento tecnico.</li>
+						<li>Aún si re-usas tiles de un mapa viejo, o de alguien m´s, puedes sacrficiar control visual.</li>
+						<li>Tiles basadas en imagenes no estan buenas para hacer cosas dinamicas.</li>
+						<li>Por lo general estas restringido a la <a href="http://en.wikipedia.org/wiki/Map_projection">proyección de mapas Mercator</a> y a su compartimiento de zooming</li>
+						</ul>
+						<aside class="notes"></aside>
+					</section>
+
+					<section>
+						<h2>¿Cuando usarlos?</h2>
+						<h3></h3>
+						<ul>
+							<li>Cuando compatibilidad con diferentes versiones de navegador y performance son importantes.</li>
+							<li>Cuando necesitas desplegar y explorar un area bastante grande a diferentes niveles de zoom.</li>
+							<li>No necesitas control visual sobre todo.</li>
+						  <li>No necesitamos que todos los componentes del mapa sean dinamicos o interactivos.</li>
+						</ul>
+						<aside class="notes"></aside>
+					</section>
+
+					<section>
+						<h2>¿Como hacer un mapa?</h2>
+						<p>
+							Para usar datos geograficos para hacer uno de estos mapas deslizantes, necesitamos en realidad hacer dos mapas:</p>
+						<ul>
+							<li>Los tiles del fondo - Tienes que importar un conjunto de datos que diga donde la tierra está, donde las calles estan, donde los puntos de interes estan, etc en un software que pueda recibirlos y generar imagenes a partir de estas.</li>
+						  <li>Otro contenido - Una vez que tengas los tiles, puedes usar geodatos para agregar cosas sobre esto como marcas y lineas.</li>
+						</ul>
+					</section>
+
+					<section data-markdown>
+						<h2>Leaflet</h2>
+
+						<p>Una de las librerias para hacer estos mapas es Leaflet. Tienes que escribir un poco de JavaScript: http://leafletjs.com/</p>
+
+						<p>
+							Asi se dibuja Uruguay en Leaflet:
+
+							map.addLayer(new L.polygon([
+									[-30.21629485445426, -57.62513342958296],
+									[-30.109686374636127, -56.976025763564735,],
+									[-30.883075860316303, -55.97324459494094],
+									[-30.853878676071393, -55.601510179249345],
+									[-31.494511407193748, -54.57245154480512],
+									[-32.047242526987624, -53.78795162618219],
+									[-32.727666110974724, -53.209588995971544],
+									[-33.20200408298183, -53.6505439927181],
+									[-33.768377780900764, -53.373661668498244],
+									[-34.39681487400223, -53.806425950726535],
+									[-34.952646579733624, -54.93586605489773],
+									[-34.75265878676407, -55.67408972840329],
+									[-34.85983570733742, -56.21529700379607],
+									[-34.430456231424245, -57.1396850246331],
+									[-34.4625472958775, -57.81786068381551],
+									[-33.909454441057576, -58.42707414410439],
+									[-33.26318897881541, -58.349611172098875],
+									[-33.040566908502015, -58.13264767112145],
+									[-32.044503676076154, -58.14244035504076],
+									[-31.016556084926208, -57.87493730328188],
+									[-30.21629485445426, -57.62513342958296]
+							]));
+
+						</p>
+					</section>
+
+					<section>
+						<h2>Leaflet</h2>
+						<p>
+							Uruguay dibujado con Leaflet
+
+							<img src="images/uruguay_slippy.png">
+						</p>
+					</section>
+
+					<section>
+						<h2>Leaflet</h2>
+						<p>
+							En Leaflet también podemos agregar datos en GeoJSON, por lo que si tenemos un archivo GeoJSON con estas coordenadas lo podemos agregar directamente:
+
+									L.geoJson(provincias).addTo(map);
+
+						</p>
+					</section>
+
+					<section>
+						<h2>Leaflet</h2>
+						<h3>Tiles</h3>
+						<p>
+							Se pueden agregar tiles ya hechas en Leaflet de muchos lados, incluido Google Maps.
+
+							<ul>
+								<li>Tilemill: http://mapbox.com/tilemill/</li>
+								<li>CloudMade: http://developers.cloudmade.com/projects/show/tiles</li>
+								<li>Stamen Design: http://maps.stamen.com/</li>
+								<li>Google Maps: https://developers.google.com/maps/</li>
+								<li>MapBox: http://mapbox.com/developers/guide/</li>
+							</ul>
+						</p>
+						<aside class="notes"></aside>
+					</section>
+
+				</section>
+
+			<section>
+				<section>
+					<h2>JavaScript + SVG/Canvas</h2>
+					<ul>
+						<li>dibuja un mapa en una página web</li>
+						<li>se usa SVG o el elemento canvas de HTML5</li>
+						<li>dibujan espacio en página web y luego dibujan lineas</li>
+						<li>usa pixeles y no latitud/longitud</li>
+					</ul>
+					<aside class="notes">
+						Otra opcion es dibujar un mapa en una página web. Esto se hace usando SVG o el elemento 'canvas' de HTML5, que lo que hacen es dibujar un espacio en una página web y luego dibujar muchas lineas y formas basado en comandos. Este metodo usa pixeles en vez de latitud/longitud. El punto superior izquierdo es 0,0. Cualquier otro pixel es X,Y donde X es el numero de pixeles a la derecha de esa esquina e Y es el numero de pixeles abajo de la esquina.
+					</aside>
+				</section>
+
+				<section data-markdown>
+					<script type="text/template">
+        ## Javascript SVG/Canvas
+						<svg width="400" height="200">
+								[Your drawing instructions go here]
+						</svg>
+					</script>
+				</section>
+
+				<section>
+					<h2>JavaScript + SVG/Canvas</h2>
+					<h3>¿Con que lo puedo hacer?</h3>
+					<p>El metodo más popular es usar una liberria de JavaScript llamada d3:  http://d3js.org/. Otra opción es usar Kartograph.js: http://kartograph.org/</p>
+				</section>
+			</section>
+
+			<section>
+				<section>
+					<h2>Con servicios en la web que crea los mapas por vos</h2>
+				</section>
+				<section>
+					<h2>Google Maps</h2>
+					<p><a href="https://mapsengine.google.com/">https://mapsengine.google.com/</a></p>
+				</section>å
+				<section>
+					<h2>Google Fusion Tables</h2>
+					<p><a href="http://table.googlelabs.com">http://table.googlelabs.com</a></p>
+				</section>
+				<section>
+					<h2>CartoDB</h2>
+					<p><a href="http://cartodb.com">http://cartodb.com</a></p>
+				</section>
+				<section>
+					<h2>BatchGeo</h2>
+					<p><a href="http://batchgeo.com">http://batchgeo.com/</a></p>
+				</section>
+			</section>
+
+				<section>
+					<h1>¡Gracias!</h1>
+					<h3>por Gabriela Rodríguez / @gaba</h3>
+					<p>Agradecimientos: Andy Tow (por enlaces a conjuntos de datos en Argentina) y Noah Veltman(por sus notas en mapas para periodistas), Brian Jacobs (por la inspiración).</p>
+				</section>
+
+			</div>
+
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+			// Full list of configuration options available here:
+			// https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: true,
+
+				theme: Reveal.getQueryHash().theme, // available themes are in /css/theme
+				transition: Reveal.getQueryHash().transition || 'default', // default/cube/page/concave/zoom/linear/fade/none
+
+				// Parallax scrolling
+				// parallaxBackgroundImage: 'https://s3.amazonaws.com/hakim-static/reveal-js/reveal-parallax-1.jpg',
+				// parallaxBackgroundSize: '2100px 900px',
+
+				// Optional libraries used to extend on reveal.js
+				dependencies: [
+					{ src: 'lib/js/classList.js', condition: function() { return !document.body.classList; } },
+					{ src: 'plugin/markdown/marked.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/markdown/markdown.js', condition: function() { return !!document.querySelector( '[data-markdown]' ); } },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } },
+					{ src: 'plugin/zoom-js/zoom.js', async: true, condition: function() { return !!document.body.classList; } },
+					{ src: 'plugin/notes/notes.js', async: true, condition: function() { return !!document.body.classList; } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>

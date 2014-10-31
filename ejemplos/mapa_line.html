@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leaflet!</title>
+    <meta charset="utf-8" />
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.css" />
+    <!--[if lte IE 8]>
+        <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.ie.css" />
+    <![endif]-->
+    <script src="http://cdn.leafletjs.com/leaflet-0.6.4/leaflet.js"></script>
+</head>
+<body>
+    <div id="map" style="position: absolute; top: 0; bottom: 0; left: 0;
+    right: 0; width: 100%; height: 100%"></div>
+    <script>
+        var map = L.map('map').setView([-34.6158527,-58.4332985], 5);
+        L.tileLayer('http://otile1.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.png').addTo(map);
+
+        map.addLayer(new L.polyline([
+            [-34.6158527,-58.4332985],
+            [-34.39681487400223, -53.806425950726535]
+          ],
+          {color: 'red'}
+          )
+        );
+
+    </script>
+</body>
+</html>
