@@ -51,6 +51,7 @@
 					<p>
 						<small>Knight-Mozilla Open News Fellow at La Nacion, Argentina</small>
 					</p>
+					<p>Presentación en <a href="http://gabelula.github.io/mapas/">http://gabelula.github.io/mapas/</a></p>
 					<aside class="notes">
 						programadora de Open News en La Nacion
 						gracias noah veltman, brian jacobs por la inspiración, andy tow por links
@@ -172,7 +173,7 @@
 				<section>
 					<section>
 						<h2>Formatos de geodatos</h2>
-						<p>geodatos es una lista de features, y cada feature es una lista de piezas geometricas, y cada pieza geometrica es una lista de latitud/longitud</p>
+						<p>un archivo de datos geograficos es una lista de features, y cada feature es una lista de piezas geometricas, y cada pieza geometrica es una lista de latitud/longitud</p>
 						<p data-markdown>
 							```
 							Feature #1:
@@ -269,57 +270,13 @@
 						<aside class="notes"></aside>
 					</section>
 
-					<section data-markdown>
-						<h2>KML</h2>
-
-						<h3>Es un XML especifico para datos geograficos. Es usado por Google Maps, Google Earth, Google Fusion Tables.</h3>
-
-						<p>
-							```
-							<Polygon id="Uruguay">
-								<outerBoundaryIs>
-									<LinearRing>
-										<coordinates>
-											-57.625133429582959,-30.216294854454262
-											-56.976025763564735,-30.109686374636127
-											-55.973244594940937,-30.883075860316303
-											-55.601510179249345,-30.853878676071393
-											-54.572451544805119,-31.494511407193748
-											-53.787951626182192,-32.047242526987624
-											-53.209588995971544,-32.727666110974724
-											-53.650543992718099,-33.20200408298183
-											-53.373661668498244,-33.768377780900764
-											-53.806425950726535,-34.396814874002231
-											-54.93586605489773,-34.952646579733624
-											-55.674089728403288,-34.752658786764073
-											-56.215297003796067,-34.859835707337417
-											-57.139685024633103,-34.430456231424245
-											-57.81786068381551,-34.462547295877499
-											-58.427074144104388,-33.909454441057576
-											-58.349611172098875,-33.263188978815407
-											-58.132647671121447,-33.040566908502015
-											-58.142440355040762,-32.044503676076154
-											-57.874937303281882,-31.016556084926208
-											-57.625133429582959,-30.216294854454262
-										</coordinates>
-									</LinearRing>
-								</outerBoundaryIs>
-							</Polygon>
-							```
-						</p>
-
-						<aside class="notes"></aside>
-					</section>
-
 					<section>
-						<h2>TopoJSON</h2>
-						<h3></h3>
-						<p>
-						Es similar a GeoJSON pero reducido para que sea más ligero y guarde solamente lo que nos importe de los datos (la topologia).
+						<h2>Otros formatos</h2>
 
-						Más información sobre este formato en https://github.com/mbostock/topojson/wiki
-						</p>
-						<aside class="notes"></aside>
+						<ul>
+						<li>KML: Es un XML especifico para datos geograficos. Es usado por Google Maps, Google Earth, Google Fusion Tables.</li>
+						<li>TopoJSON: similar a GeoKSON pero reducido para ocupar menos espacio.</li>
+						</ul>
 					</section>
 
 					<section>
@@ -411,7 +368,7 @@
 						<p>
 							<a href="http://www.google.com"><img src="images/slippy_maps.png"></a>
 						</p>
-						<aside class="notes">El mapa es una serie de cuadrados (tiles) en el fondo que son sólo imagenes, por lo que se llaman mapas basados en "tiles". En cada nivel de zoom, todo el globo es dividido en una plantilla gigante de cuadrados. En donde estes en el mapa, carga las imagenes para los cuadrados que estes mirando y comienza a cargar todos los cuadrados cercanos por si te moves. Cuando muevas el mapa, carga los nuevos que necesites.</aside>
+						<aside class="notes">El mapa es una serie de cuadrados (tiles) en el fondo que son sólo imagenes, por lo que se llaman mapas basados en "tiles". En cada nivel de zoom, todo el globo es dividido en una grilla gigante de cuadrados. En donde estes en el mapa, carga las imagenes para los cuadrados que estes mirando y comienza a cargar todos los cuadrados cercanos por si te moves. Cuando muevas el mapa, carga los nuevos que necesites.</aside>
 					</section>
 
 					<section>
@@ -503,34 +460,6 @@
 							<img src="images/uruguay_slippy.png">
 						</p>
 					</section>
-
-					<section>
-						<h2>Leaflet</h2>
-						<p>
-							En Leaflet también podemos agregar datos en GeoJSON, por lo que si tenemos un archivo GeoJSON con estas coordenadas lo podemos agregar directamente:
-
-									L.geoJson(provincias).addTo(map);
-
-						</p>
-					</section>
-
-					<section>
-						<h2>Leaflet</h2>
-						<h3>Tiles</h3>
-						<p>
-							Se pueden agregar tiles ya hechas en Leaflet de muchos lados, incluido Google Maps.
-
-							<ul>
-								<li>Tilemill: http://mapbox.com/tilemill/</li>
-								<li>CloudMade: http://developers.cloudmade.com/projects/show/tiles</li>
-								<li>Stamen Design: http://maps.stamen.com/</li>
-								<li>Google Maps: https://developers.google.com/maps/</li>
-								<li>MapBox: http://mapbox.com/developers/guide/</li>
-							</ul>
-						</p>
-						<aside class="notes"></aside>
-					</section>
-
 				</section>
 
 			<section>
@@ -585,11 +514,12 @@
 				</section>
 			</section>
 
-				<section>
-					<h1>¡Gracias!</h1>
-					<h3>por Gabriela Rodríguez / @gaba</h3>
-					<p>Agradecimientos: Andy Tow (por enlaces a conjuntos de datos en Argentina) y Noah Veltman(por sus notas en mapas para periodistas), Brian Jacobs (por la inspiración).</p>
-				</section>
+			<section>
+				<h1>¡Gracias!</h1>
+				<h3>por Gabriela Rodríguez / @gaba</h3>
+				<p>Agradecimientos: Andy Tow (por enlaces a conjuntos de datos en Argentina) y Noah Veltman(por sus notas en mapas para periodistas), Brian Jacobs (por la inspiración).</p>
+				<p>Presentación en <a href="http://gabelula.github.io/mapas/">http://gabelula.github.io/mapas/</a></p>
+			</section>
 
 			</div>
 
